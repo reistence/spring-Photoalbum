@@ -67,7 +67,7 @@ public class PhotoController {
        model.addAttribute("photo", new Photo());
        List<Category> category = categoryService.getAll();
        model.addAttribute("categoriesList", category);
-       return "/photos/create";
+       return "/photo/create";
    }
 
 

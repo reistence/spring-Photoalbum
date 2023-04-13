@@ -39,7 +39,9 @@ public class Photo {
 
 
     @ManyToMany
-    @JoinTable(name = "photo_category", joinColumns = @JoinColumn(name = "photo_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JoinTable(name = "photo_category",
+            joinColumns = @JoinColumn(name = "photo_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
 
 

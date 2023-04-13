@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <th:block th:replace="~{photo/fragments :: resources}"></th:block>
+
+  <title>Home</title>
+</head>
+<body class="my-body">
+
+<div class="container-fluid">
+    <nav th:replace="~{photo/fragments :: navbar('home', ${keyword}, true)}"></nav>
+
+</div>
+
+<div class="my-fluid rel" >
+    <img class="jumbo" th:src="@{/jumbo.jpg}" >
+
+    <div class="banner">
+        <img class="big-logo" th:src="@{/logo.png}">
+            <h1>Your professional Photographer </h1>
+
+    </div>
+
+</div>
+
+<th:block th:replace="~{photo/fragments :: scripts}"></th:block>
+</body>
+</html>

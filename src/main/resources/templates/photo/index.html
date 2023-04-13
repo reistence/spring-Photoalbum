@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="~{photo/fragments :: resources}"></th:block>
+    <title>All Photos</title>
+</head>
+<body >
+
+<div class="container-fluid">
+    <nav th:replace="~{photo/fragments :: navbar('photos', '', true)}"></nav>
+
+</div>
+
+<div class="container">
+
+
+    <div class="d-flex justify-content-start align-items-center" style="gap: 1em">
+        <h1>All Photos</h1>
+        <a th:href="@{/photos/create}" class="my-btn-sx rounded-circle" title="add photo"><i
+                class="fa-solid fa-plus"></i></a>
+    </div>
+
+    <table class="table" th:if="${photos.size() > 0}" >
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Descripton</th>
+            <th scope="col">Visible</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${photos}" th:object="${p}">
+            <td>
+                <a th:href="@{|/photos/*{id}|}"  title="detail">
+                    <img class="cover" th:src="${p.url}">
+                </a>
+            </td>
+            <th scope="row" style="font-size: 1.7rem " >
+                <a th:href="@{|/photos/*{id}|}" th:text="*{title}" title="detail">
+                </a>
+            </th>
+            <td  th:text="*{description}"></td>
+            <td style="color: #98694b; font-size: 1rem " th:text="|*{visible}|"></td>
+            <td>  <a th:href="@{|/photos/edit/*{id}|}" class="my-btn" title="edit">
+                          <i class="fa-solid fa-pen-to-square"></i>
+                     </a>
+
+                <form  id="photo-del-form"
+                       method="post"
+                       th:action="@{|/photos/delete/*{id}|}"
+                       >
+
+
+
+                    <button
+
+                            class="my-btn"
+                            type="submit"
+                            title="delete" >
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </form>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <p th:if="${photos.size() == 0}">No photo corresponding to this query</p>
+
+</div>
+
+
+<th:block th:replace="~{photo/fragments :: scripts}"></th:block>
+</body>
+</html>

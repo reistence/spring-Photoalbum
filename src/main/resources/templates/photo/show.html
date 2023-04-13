@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="~{photo/fragments :: resources}"></th:block>
+    <title th:text="|Photo ${photo.title}|" ></title>
+</head>
+<body>
+<div class="container-fluid">
+  <nav th:replace="~{photo/fragments :: navbar('photos', '', false)}"></nav>
+</div>
+
+<div class="container">
+    <a th:href="@{/photos/index}"><i style="font-size: 2rem" class="fa-solid fa-chevron-left"></i></a>
+
+    <div class="d-flex justify-content-center mb-5">
+        <h1 th:text="|${photo.title}|" class="text-center"></h1>
+        <div class="price" >Visible: <span th:text="|${photo.visible}|"></span> </div>
+    </div>
+
+    <div class="wrapper d-flex justify-content-center flex-column ">
+        <img class="cover-show" th:src="${photo.url}">
+
+        <div class="details my-5 ">
+            <p class="text-center my-1 "> Categories:
+                <span th:each="cat : ${photo.categories}" th:text="|${cat.name}  |"></span>
+            </p>
+            <p class="text-center my-1 " th:text="|Description: ${photo.description}|"> </p>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+<th:block th:replace="~{photo/fragments :: scripts}"></th:block>
+</body>
+</html>

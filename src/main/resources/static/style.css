@@ -87,19 +87,19 @@ transform: scale(1.05);
     }
 
 .cover{
-    /*height: 400px;*/
-    width: 300px;
+  /*  height: 500px;
+    width: 500px;*/
     object-fit: contain;
     display: block;
     border-radius: 15px;
 }
-.cover:hover{
+/*.cover:hover{
 transform: scale(1.05);
-}
+}*/
 
 .wrapper{
 position: relative;
-border-radius: 50%;
+border-radius: 20px;
 overflow: hidden;
 width: 100%;
 max-width: 100vmin;
@@ -114,7 +114,7 @@ object-fit: contain;
 position: fixed;
 top: 150px;
 background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(0, 0 ,0,.5), rgba(0 ,0, 0,1));
-font-size: 2rem;
+font-size: 1.5rem;
 z-index: 99;
 right: 0px;
 transform: translate(-0%, -50%);
@@ -125,30 +125,35 @@ align-items: center;
 display: flex;
 justify-content: center;
 padding: 1rem;
+display: flex;
+    flex-direction: column;
 }
 
 
 
-.wrapper > p {
+.wrapper > .details {
 position: absolute;
 bottom: 0px;
 left: 50%;
 width: 100%;
 transform: translate(-50%, 40%);
 background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,1));
-padding: 9em;
+padding: 5em;
 border-radius: 20px;
 opacity: 0;
 }
 
-.wrapper:hover > p {
+
+
+.wrapper:hover > .details {
 opacity: 1;
 }
 
 
 .my-fluid{
 width: 100%;
-height: calc(100vh - 50px );
+/*height: calc(100vh - 50px );*/
+height: 100vh;
 }
 .jumbo{
 width: 100%;
@@ -238,6 +243,28 @@ color: #262627 !important ;
 input, textarea{
 background-color:  #262627 !important;
 color: #98694b !important;
+}
+
+.rel{
+position: relative;
+}
+
+
+.banner{
+position: absolute;
+top: 50%;
+left: 20%;
+transform: translate(-50%, -80%);
+width: 30%;
+margin: 0 auto;
+}
+
+.banner > h1{
+color: white;
+}
+
+.my-body{
+padding: 0;
 }
 
 

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <th:block th:replace="~{photo/fragments :: resources}"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <nav th:replace="~{photo/fragments :: navbar('photos', '', false)}"></nav>
+</div>
+<div class="container py-4">
+    <div class="row">
+        <form th:object="${photo}" class="w-75 m-auto mt-5" method="post" th:action="@{|*{id}|}">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input th:errorClass="is-invalid" type="text" class="form-control" id="title" th:field="*{title}">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <label for="visible" class="form-label">Visible</label>
+                <input th:errorClass="is-invalid" type="checkbox" class="form-check" id="visible" th:field="*{visible}">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('visible')}">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('visible')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea th:errorClass="is-invalid" type="textarea" class="form-control" id="description"
+                          th:field="*{description}"></textarea>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <label class="form-label" for="url">Url</label>
+                <input type="text" id="url" class="form-control" th:field="*{url}"
+                       th:errorClass="is-invalid">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('url')}">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('url')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-6 my-3">
+                <h4>Categories</h4>
+                <div class="form-check" th:each="cat : ${categoriesList}">
+                    <input class="form-check-input" type="checkbox" th:value="${cat.id}"
+                           th:id="|cat_${cat.id}|" th:field="*{categories}">
+                    <label class="form-check-label" th:for="|cat_${cat.id}|" th:text="${cat.name}"></label>
+                </div>
+            </div>
+
+
+            <div class="col-3 d-flex my-5">
+                <a class="my-btn" th:href="@{/photos}">Cancel</a>
+                <button type="submit" class="my-btn">Save</button>
+            </div>
+        </form>
+
+
+
+    </div>
+
+</div>
+<th:block th:replace="~{photo/fragments :: scripts}"></th:block>
+
+</body>

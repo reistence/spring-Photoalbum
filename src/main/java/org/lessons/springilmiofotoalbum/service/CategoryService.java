@@ -17,7 +17,7 @@ public class CategoryService {
     private CategoryRepository categoryRepo;
 
     public List<Category> getAll(){
-        return categoryRepo.findAll(Sort.by("name"));
+        return categoryRepo.findAll();
     }
 
     public Category create(Category formCategories){
