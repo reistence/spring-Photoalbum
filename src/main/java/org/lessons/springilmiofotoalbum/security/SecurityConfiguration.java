@@ -42,7 +42,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/photos/create", "/photos/edit/**", "/photos/delete/**")
                 .hasAuthority("ADMIN")
                 .requestMatchers("/", "/photos", "/photos/**").hasAnyAuthority("USER", "ADMIN")
-            /*    .requestMatchers("/", "/photos", "/photos/**").hasAnyAuthority( "ADMIN")*/
+                .requestMatchers("/", "/messages", "/messages/**").hasAnyAuthority( "ADMIN")
                 .requestMatchers("/**").permitAll()
                 .and().formLogin()
                 .and().logout()

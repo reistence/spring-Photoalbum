@@ -45,6 +45,13 @@
                             th:classAppend="${current == 'categories'} ? my-active : not-active"
                     >Categories</a>
                 </li>
+                <li class="nav-item">
+                    <a
+                            th:href="@{/messages}"
+                            class="nav-link text-white"
+                            th:classAppend="${current == 'messages'} ? my-active : not-active"
+                    >Messages</a>
+                </li>
             </ul>
             <form
                     th:if="${showSearch}"
